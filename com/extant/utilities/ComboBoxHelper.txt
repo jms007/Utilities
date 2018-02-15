@@ -1,0 +1,70 @@
+                             HOW TO MAKE A JComboBox HELPER
+
+ADD THE JComboBox COMPONENT (we name it comboTest)
+If you want to display the current contents of comboBuffer,
+    add a JLabel component (we call it lblBuffer)
+    and include the two lines marked // (1)
+
+ADD CLASS VARIABLES
+    StringBuffer comboBuffer;
+    boolean initializing;
+    Vector list;
+    int listP[];
+
+CODE A COMBOBOX LOAD ROUTINE
+This initializes the JComboBox with String data from a list.
+In this example, we use a Vector as the list.  (It usually makes sense
+for this list to be sorted.)
+    private void comboTestLoad( Vector list )
+    {
+        initializing = true;
+        listP[] = Sorts.sort( list );
+        comboVendor.removeAllItems();
+        for (int i=0; i<listP.length; ++i)
+            comboVendor.addItem( list.elementAt( listP[i] ) );
+        initializing = false;
+    }
+
+CODE EVENT HANDLER FOR Focus Gained
+    private void comboTestFocusGained(java.awt.event.FocusEvent evt)
+    {
+        comboBuffer = new StringBuffer();
+        lblBuffer.setText( "" ); // (1)
+    }
+
+CODE EVENT HANDLER FOR Key Typed
+    private void comboTestKeyTyped(java.awt.event.KeyEvent evt)
+    {
+        int i;
+        if ( evt.getKeyChar() == evt.VK_ESCAPE )
+            comboBuffer = new StringBuffer();
+        else if ( evt.getKeyChar() == '\b' )
+        {
+            if ( comboBuffer.length() > 0 )
+                comboBuffer.deleteCharAt( comboBuffer.length() - 1 );
+        }
+        else comboBuffer.append( evt.getKeyChar() );
+        lblBuffer.setText( comboBuffer.toString() ); // (1)
+        if ( comboBuffer.toString().length() > 0 )
+        {
+            String cb = comboBuffer.toString();
+            for (i=0; i<vendorNames.size(); ++i)
+                if ( ((String)comboTest.getItemAt( i )).toLowerCase().startsWith( cb.toLowerCase() ) ) break;
+            if ( i >= vendorNames.size() ) i = 0;
+        }
+        else i = 0;
+        comboTest.setSelectedIndex( i );
+    }
+
+CODE EVENT HANDLER FOR ItemStateChanged (if required)
+This handler is needed only to display additional information associated with
+the selected item
+    private void comboTestItemStateChanged(java.awt.event.ItemEvent evt)
+    {
+        if ( initializing ) return;
+        if ( evt.getStateChange() != evt.SELECTED ) return;
+        int selectedIndex = listP[comboTest.getSelectedIndex()];
+        // Display data from list[selectedIndex] ...
+    }
+
+

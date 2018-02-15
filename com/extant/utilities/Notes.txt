@@ -1,0 +1,210 @@
+Utilities:  After build do the following
+1. Replace ...VL2\lib\Utilities.jar with ...Utilities\dist\Utilities.jar
+2. Replace ...Java7\Libraries\Utilities.jar with ...Utilities\dist\Utilities.jar
+
+Setting up a new entity:
+    In VL2.properties:
+        Start with G:\ACCOUNTING\JMS\generic.properties
+        Remove the check-writing coordinates
+            (e.g. VL.SARight=double|7.25)
+            (These have been deleted already)
+        Remove INVOICE.* (if not planning to use invoicing app)
+        Set entityName
+        Set VL.CashAcct
+        Review system.*  items
+        Review VL.RemotePolicy
+        Set VL.Year
+        Review VL.NextCheckNo
+        Review VL.WorkDirectory
+        Review VL.EntityDirectory
+        Review VL.NextCheckNo
+        
+        
+        1-7-17
+Copy the lines in file DisplayTree.java from com.extant.utilities to this file
+Copy the file DisplayChartTree.java from con.extant.VL to this file 
+then
+Replace the lines in DisplayTree.java into the ex
+
+===============================================
+lines from com.extant.VL DisplayChartTree.java:
+===============================================
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.extant.VL;
+
+/**
+ *
+ * @author jms
+ */
+import com.extant.VL.ChartTree;
+import java.awt.Point;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import javax.swing.JTree;
+
+/**
+ *
+ * @author  jms
+ */
+public class DisplayChartTree
+    extends JFrame
+{
+    public DisplayChartTree( String frameTitle, ChartTree chartTree )
+    {
+        this( frameTitle, chartTree, null, null );
+    }
+
+    public DisplayChartTree( String frameTitle, ChartTree chartTree, Point location, Dimension size )
+    {
+        initComponents();
+        setTitle( frameTitle );
+        if ( location != null ) this.setLocation( location );
+        if ( size != null ) this.setSize( size );
+        jScrollPane1.setViewportView( chartTree );
+        this.pack();
+        this.setVisible(true);
+    }
+
+    private void initComponents() {//GEN-BEGIN:initComponents
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        btnClose = new javax.swing.JButton();
+
+        setTitle("Directory Tree");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                exitForm(evt);
+            }
+        });
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(300, 400));
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        btnClose.setFont(new java.awt.Font("Dialog", 0, 12));
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        jPanel1.add(btnClose);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
+
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-305)/2, (screenSize.height-419)/2, 305, 419);
+    }//GEN-END:initComponents
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCloseActionPerformed
+    {//GEN-HEADEREND:event_btnCloseActionPerformed
+        exitForm( null );
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    /** Exit the Application */
+    public void exitForm(java.awt.event.WindowEvent evt)
+    {//GEN-FIRST:event_exitForm
+        dispose();
+    }//GEN-LAST:event_exitForm
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    // End of variables declaration//GEN-END:variables
+}
+
+======================================
+end of DisplayChartTree
+begin DisplayTree
+========================================
+/*
+ * THIS IS THE CODE FOR DisplayTree.java
+ *
+ * DisplayTree.java
+ *
+ * Created on September 3, 2006, 9:35 AM
+ */
+
+package com.extant.utilities;
+
+import java.awt.Point;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import javax.swing.JTree;
+
+/**
+ *
+ * @author  jms
+ */
+public class DisplayTree
+    extends JFrame
+{
+    public DisplayTree( String frameTitle, JTree tree )
+    {
+        this( frameTitle, tree, null, null );
+    }
+
+    public DisplayTree( String frameTitle, ChartTree chartTree, Point location, Dimension size )
+    {
+        initComponents();
+        setTitle( frameTitle );
+        if ( location != null ) this.setLocation( location );
+        if ( size != null ) this.setSize( size );
+        jScrollPane1.setViewportView( chartTree );
+        this.pack();
+        this.setVisible(true);
+    }
+
+    private void initComponents() {//GEN-BEGIN:initComponents
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        btnClose = new javax.swing.JButton();
+
+        setTitle("Directory Tree");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                exitForm(evt);
+            }
+        });
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(300, 400));
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        btnClose.setFont(new java.awt.Font("Dialog", 0, 12));
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        jPanel1.add(btnClose);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
+
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-305)/2, (screenSize.height-419)/2, 305, 419);
+    }//GEN-END:initComponents
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCloseActionPerformed
+    {//GEN-HEADEREND:event_btnCloseActionPerformed
+        exitForm( null );
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    /** Exit the Application */
+    public void exitForm(java.awt.event.WindowEvent evt)
+    {//GEN-FIRST:event_exitForm
+        dispose();
+    }//GEN-LAST:event_exitForm
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    // End of variables declaration//GEN-END:variables
+}
