@@ -11,7 +11,7 @@ import java.awt.datatransfer.*;
 import java.awt.Color;
 import javax.swing.JFrame;
 
-public class Crypto
+public class CryptoFront
     extends javax.swing.JFrame
     implements ClipboardOwner
         
@@ -24,7 +24,7 @@ public class Crypto
     private String keyPhrase;
     Clipboard clipboard;
 
-    public Crypto( String inputFileName )
+    public CryptoFront( String inputFileName )
     {
         inFileName = inputFileName;
         initComponents();
@@ -322,8 +322,8 @@ public class Crypto
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        if ( args.length >= 1 ) new Crypto( args[0] ).setVisible( true );
-        else new Crypto( "" ).setVisible( true );
+        if ( args.length >= 1 ) new CryptoFront( args[0] ).setVisible( true );
+        else new CryptoFront( "" ).setVisible( true );
     }   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
