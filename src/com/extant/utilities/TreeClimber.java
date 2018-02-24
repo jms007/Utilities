@@ -171,6 +171,11 @@ implements ErrorHandler
 
     public static void main(String args[])
     {
+    	
+    	if(args.length==0) {
+    		throw new RuntimeException("Please provide XML file argument");
+    	}
+    	String xmlFile = args[0];
         try
         {
             TreeClimber treeClimber = new TreeClimber();
@@ -179,7 +184,7 @@ implements ErrorHandler
             LogFile logger = new LogFile("G:\\ACCOUNTING\\TreeClimber.log");
             logger.log("new LogFile by TreeClimber " + new Julian().toString("mm-dd-yyyy hh:mm:ss"));
             //logger.setLogLevel(LogFile.DEBUG_LOG_LEVEL);
-            String sourceFilename = Console.prompt("Enter sourceFilename: ", "E:\\ACCOUNTING\\JMS\\GL17\\CHART.XML");
+            String sourceFilename = Console.prompt("Enter sourceFilename: ", xmlFile);
             //String sourceFilename = "G:\\ACCOUNTING\\JMS\\GL06\\CHART.xml";
             Document document = new TreeClimber().buildDocument( sourceFilename, logger, true, true, true );
             if (document == null) System.exit(1);

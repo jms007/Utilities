@@ -233,7 +233,7 @@ Console.println( "item selected  combo index=" + comboEntry.getSelectedIndex() )
         try
         {
             SelectFromList selectVendor = new SelectFromList( new JFrame(), true, 
-                "E:\\ACCOUNTING\\EXTANT\\GL17\\VENDOR.LST" );
+                "C:\\Users\\jms\\OneDrive\\ACCOUNTING\\EXTANT\\GL17\\VENDOR.LST" );
             selectVendor.setVisible( true );
             String[] lines = selectVendor.getSelectedVendor();
             if ( lines == null ) Console.println( "Vendor select was canceled." );
