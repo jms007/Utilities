@@ -376,15 +376,15 @@ public class Strings implements FilenameFilter
 	{
 		String space = "";
 		if (s.length() >= colWidth)
-			return s.substring(0, colWidth);
+			return s.substring(0, colWidth - 5) + "...";
 		int nSpace = (colWidth - s.length()) / 2;
 		for (int i = 0; i < nSpace; ++i)
 			space += " ";
 		String ans = space + s;
-		if (ans.length() > colWidth)
-			ans = ans.substring(0, colWidth - 1);
-		while (ans.length() < colWidth)
-			ans += " ";
+		// if (ans.length() > colWidth)
+		// ans = ans.substring(0, colWidth - 1);
+		// while (ans.length() < colWidth)
+		// ans += " ";
 		return ans;
 	}
 
