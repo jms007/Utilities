@@ -160,6 +160,10 @@ public class TreeClimber implements ErrorHandler
 
 	public static void main(String args[])
 	{
+		/*
+		 * To set the input XML file, use "run as | Run Configurations" and set first
+		 * argument
+		 */
 
 		if (args.length == 0)
 		{
@@ -175,8 +179,6 @@ public class TreeClimber implements ErrorHandler
 			logger.log("new LogFile by TreeClimber " + new Julian().toString("mm-dd-yyyy hh:mm:ss"));
 			// logger.setLogLevel(LogFile.DEBUG_LOG_LEVEL);
 			String sourceFilename = Console.prompt("Enter sourceFilename: ", xmlFile);
-			// String sourceFilename = "G:\\ACCOUNTING\\JMS\\GL06\\CHART.xml";
-			// String sourceFilename = "C:\\Users\\jms\\ACCOUNTING\\JMSCT\\CHART.XML";
 			Document document = new TreeClimber().buildDocument(sourceFilename, logger, true, true, true);
 			if (document == null)
 				System.exit(1);
