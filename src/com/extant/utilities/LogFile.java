@@ -141,7 +141,7 @@ public class LogFile
 	public void logFatal(String msg)
 	{
 		System.out.println("logFatal: " + msg);
-		log(msg);
+		// log(msg);
 		whereAreWe(new Error());
 		System.exit(1);
 	}
