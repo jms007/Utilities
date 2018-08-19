@@ -3,7 +3,6 @@ package com.extant.utilities;
 import java.io.*;
 import java.text.*;
 import java.util.StringTokenizer;
-import java.util.Properties;
 import java.util.Date;
 import java.util.regex.*;
 import java.util.Vector;
@@ -355,7 +354,10 @@ public class Strings implements FilenameFilter
 	public static String rightJustify(String s, int colWidth)
 	{
 		if (s.length() >= colWidth)
-			return s.substring(0, colWidth);
+			if (colWidth > 3)
+				return s.substring(0, colWidth - 3) + "...";
+			else
+				return "?";
 		String ans = "";
 		for (int i = 0; i < colWidth - s.length(); ++i)
 			ans += " ";
@@ -364,8 +366,14 @@ public class Strings implements FilenameFilter
 
 	public static String leftJustify(String s, int colWidth)
 	{
-		if (s.length() >= colWidth)
-			return s.substring(0, colWidth);
+		if (s.length() > colWidth)
+		{
+			if (colWidth >= 3)
+			{
+				return s.substring(0, colWidth - 3) + "...";
+			} else
+				return "...";
+		}
 		String ans = s;
 		while (ans.length() < colWidth)
 			ans += " ";
