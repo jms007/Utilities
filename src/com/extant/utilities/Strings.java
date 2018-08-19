@@ -9,6 +9,7 @@ import java.util.Vector;
 
 public class Strings implements FilenameFilter
 {
+	public static final String VERSION = "8-19-18";
 	public static final String ALPHA_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public static final String ALPHA_LOWER = ALPHA_UPPER.toLowerCase();
 	public static final String ALPHA = ALPHA_UPPER + ALPHA_LOWER;
@@ -17,6 +18,11 @@ public class Strings implements FilenameFilter
 
 	public Strings()
 	{
+	}
+
+	public void printVersion()
+	{
+		System.out.println("com.extant.utilities.Strings" + VERSION);
 	}
 
 	// Returns the current working directory, including drive letter
