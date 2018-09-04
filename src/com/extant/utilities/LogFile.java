@@ -3,6 +3,7 @@ package com.extant.utilities;
 import java.io.File;
 import java.io.IOException;
 import java.util.StringTokenizer;
+import java.awt.Toolkit;
 
 public class LogFile
 {
@@ -170,6 +171,11 @@ public class LogFile
 		else
 			logLevel = newLevel;
 		log("logLevel changed from " + oldLevel + " to " + newLevel);
+		// emit a beep - doesn't work! (prints ' 7' instead)
+		System.out.print("\0007");
+		System.out.flush();
+		// another try which also does not work (from Oracle)
+		Toolkit.getDefaultToolkit().beep();
 		whereAreWe(2, new Error());
 	}
 
