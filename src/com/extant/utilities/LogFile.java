@@ -69,6 +69,11 @@ public class LogFile
 			specificLevels[i] = false;
 	}
 
+	public UsefulFile getLogFile()
+	{
+		return uf;
+	}
+
 	public void log(int level, String msg)
 	{
 		if (level < 0)
