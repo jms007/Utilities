@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class Strings implements FilenameFilter
 {
-	public static final String VERSION = "8-19-18";
+	public static final String VERSION = "8-19-18(1)";
 	public static final String ALPHA_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public static final String ALPHA_LOWER = ALPHA_UPPER.toLowerCase();
 	public static final String ALPHA = ALPHA_UPPER + ALPHA_LOWER;
@@ -20,9 +20,9 @@ public class Strings implements FilenameFilter
 	{
 	}
 
-	public void printVersion()
+	public static void printVersion()
 	{
-		System.out.println("com.extant.utilities.Strings" + VERSION);
+		System.out.println("com.extant.utilities.Strings version " + VERSION);
 	}
 
 	// Returns the current working directory, including drive letter
@@ -359,7 +359,7 @@ public class Strings implements FilenameFilter
 
 	public static String rightJustify(String s, int colWidth)
 	{
-		if (s.length() >= colWidth)
+		if (s.length() > colWidth)
 			if (colWidth > 3)
 				return s.substring(0, colWidth - 3) + "...";
 			else
@@ -709,7 +709,7 @@ public class Strings implements FilenameFilter
 	{
 		try
 		{
-			Float f = Float.parseFloat(s);
+			Float.parseFloat(s);
 			return true;
 		} catch (NumberFormatException nfx)
 		{
