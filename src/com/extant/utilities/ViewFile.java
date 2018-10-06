@@ -15,6 +15,9 @@ import java.io.IOException;
  */
 public class ViewFile extends javax.swing.JFrame
 {
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public ViewFile(String fileName, LogFile logger) throws UtilitiesException
 	{
 		this(fileName, logger, false);
@@ -140,13 +143,13 @@ public class ViewFile extends javax.swing.JFrame
 				openFile(fileName);
 		} catch (IOException iox)
 		{
-			logger.log(logger.FATAL_ERROR, iox.getMessage());
+			logger.log(LogFile.FATAL_ERROR, iox.getMessage());
 		} catch (InterruptedException ix)
 		{
-			logger.log(logger.FATAL_ERROR, ix.getMessage());
+			logger.log(LogFile.FATAL_ERROR, ix.getMessage());
 		} catch (UtilitiesException ux)
 		{
-			logger.log(logger.FATAL_ERROR, ux.getMessage());
+			logger.log(LogFile.FATAL_ERROR, ux.getMessage());
 		}
 		exitForm(null);
 	}

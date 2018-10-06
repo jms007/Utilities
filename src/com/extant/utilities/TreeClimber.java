@@ -118,7 +118,7 @@ public class TreeClimber implements ErrorHandler
 		throw new SAXException("Parse Fatal Error Line " + exception.getLineNumber() + ": " + exception.getMessage());
 	}
 
-	// Here's the deal on dates:
+	// Here's the deal on dates: THESE COMMENTS ARE OBSOLETE!
 	// We access the gl transactions only once, at Chart.init()
 	// At this time, we change the date field of transactions as follows:
 	// if the date ends with "00", replace the entire field with "BEFORE"
