@@ -59,7 +59,10 @@ public class ComboMatch
 	/***** FOR TESTING *****/
 	public static void main(String[] args)
 	{
-		long startTime = System.currentTimeMillis();
+		long startTime;
+		long endTime;
+
+		startTime = System.currentTimeMillis();
 
 		try
 		{
@@ -74,6 +77,7 @@ public class ComboMatch
 				Console.println("No combination sums to " + error);
 				return;
 			}
+			endTime = System.currentTimeMillis();
 			Console.println(Strings.plurals("combination", answers.size()) + " summing to " + error + ":");
 			for (int i = 0; i < answers.size(); ++i)
 			{
@@ -83,8 +87,7 @@ public class ComboMatch
 					Console.print("[" + combo[j] + "]=" + details[combo[j]] + " ");
 				Console.println("");
 			}
-			long endTime = System.currentTimeMillis();
-			System.out.println("That took " + (endTime - startTime) + " milliseconds");
+			System.out.println("Run time: " + (endTime - startTime) + " milliseconds" + " (excluding report)");
 		} catch (UtilitiesException ux)
 		{
 			Console.println(ux.getMessage());
