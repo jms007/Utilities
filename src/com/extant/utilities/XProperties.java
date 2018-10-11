@@ -422,7 +422,7 @@ public class XProperties extends Properties
 
 	public boolean isSectionPresent(String sectionName)
 	{
-		Enumeration en = super.keys();
+		Enumeration <?>en = super.keys();
 		while (en.hasMoreElements())
 		{
 			String key = (String) en.nextElement();
@@ -502,7 +502,7 @@ public class XProperties extends Properties
 	{
 		int nErrors = 0;
 		report = new StringBuffer();
-		Enumeration en = this.keys();
+		Enumeration <?>en = this.keys();
 		while (en.hasMoreElements())
 		{
 			String key = (String) en.nextElement();
@@ -601,7 +601,7 @@ public class XProperties extends Properties
 			System.out.println("Cannot open JMS.properties");
 			return;
 		}
-		Enumeration keys = props.keys();
+		Enumeration <?> keys = props.keys();
 		while (keys.hasMoreElements())
 			System.out.println(keys.nextElement());
 		String glFile = props.getString("GLFile");
