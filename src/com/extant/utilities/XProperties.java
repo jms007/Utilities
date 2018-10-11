@@ -28,16 +28,14 @@ import java.util.Enumeration;
 import java.text.DecimalFormat;
 import java.awt.Point;
 import java.awt.Dimension;
-import java.sql.Date;
 
 /**
  *
  * @author jms
  */
+@SuppressWarnings("serial")
 public class XProperties extends Properties
 {
-	// public final static String defaultPropertiesFilename =
-	// "E:\\ACCOUNTING\\EXTANT\\EXTANT.properties";
 	public String propertiesFilename;
 	StringBuffer report;
 	String section = ""; // Default is to include all properties
